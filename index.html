@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ห้องย่อยสิทธิในสิ่งแวดล้อมที่ดี - สมัชชาสิทธิมนุษยชน 2568</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Sarabun -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Icons (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sarabun', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#059669', // Emerald 600
+                        secondary: '#065f46', // Emerald 800
+                        accent: '#0ea5e9', // Sky 500 (For Water Theme)
+                        water: '#e0f2fe', // Sky 100
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Sarabun', sans-serif; }
+        .clip-path-slope { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+        .bg-water-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='%230ea5e9' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">
+                    <i class="fa-solid fa-hand-holding-droplet"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight text-primary">สมัชชาสิทธิมนุษยชน 68</h1>
+                    <p class="text-xs text-slate-500">ห้องย่อย: สิทธิในสิ่งแวดล้อมที่ดี</p>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#schedule" class="hover:text-primary transition-colors">กำหนดการ</a>
+                <a href="#documents" class="hover:text-primary transition-colors">เอกสาร</a>
+                <a href="#zoom" class="hover:text-primary transition-colors text-blue-600"><i class="fa-solid fa-video mr-1"></i>Zoom</a>
+                <a href="#register" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-secondary transition-colors shadow-md">
+                    <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>ลงทะเบียน
+                </a>
+            </div>
+            <button onclick="toggleMenu()" class="md:hidden text-slate-600 hover:text-primary text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 p-4 shadow-lg">
+            <div class="flex flex-col gap-4 text-center">
+                <a href="#schedule" onclick="toggleMenu()" class="block py-2 hover:text-primary">กำหนดการ</a>
+                <a href="#documents" onclick="toggleMenu()" class="block py-2 hover:text-primary">เอกสารประกอบ</a>
+                <a href="#zoom" onclick="toggleMenu()" class="block py-2 text-blue-600 font-bold">ข้อมูล Zoom</a>
+                <a href="#register" onclick="toggleMenu()" class="block py-2 bg-primary text-white rounded-lg">ลงทะเบียน</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-gradient-to-br from-teal-700 via-emerald-600 to-cyan-700 text-white pt-32 pb-24 lg:pt-40 lg:pb-32 clip-path-slope">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+            <i class="fa-solid fa-water absolute top-10 left-10 text-9xl animate-pulse"></i>
+            <i class="fa-solid fa-cloud-showers-heavy absolute bottom-20 right-20 text-8xl"></i>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <!-- ปรับขนาด font เป็น text-xl และเพิ่ม padding ให้ดูใหญ่ขึ้น -->
+            <span class="inline-block py-2 px-4 rounded-full bg-white/20 border border-white/30 text-xl font-semibold mb-6 backdrop-blur-sm shadow-lg">
+                งานสมัชชาสิทธิมนุษยชน เนื่องในวันสิทธิมนุษยชนสากล 2568
+            </span>
+            <h1 class="text-2xl md:text-4xl font-bold mb-6 leading-normal text-emerald-100">
+                ห้องย่อยประเด็นสิทธิในสิ่งแวดล้อมที่ดี
+            </h1>
+            
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-8 text-white drop-shadow-md max-w-5xl mx-auto" style="line-height: 1.6;">
+                "สิทธิมนุษยชนกับการจัดการน้ำ<br class="hidden md:block"/>และภัยพิบัติด้านน้ำท่ามกลางวิกฤติโลกเดือด"
+            </h2>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10 text-sm md:text-base">
+                <div class="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md py-2 px-4 rounded-lg border border-white/10">
+                    <i class="fa-regular fa-calendar text-cyan-300"></i>
+                    <span>18 - 19 ธันวาคม 2568</span>
+                </div>
+                <div class="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md py-2 px-4 rounded-lg border border-white/10">
+                    <i class="fa-solid fa-location-dot text-cyan-300"></i>
+                    <span>รร.เซ็นทารา ไลฟ์ ศูนย์ราชการฯ แจ้งวัฒนะ</span>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://register.theconnect789.com/humanrights/room/sub1" target="_blank" class="bg-white text-teal-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-cyan-50 transition-transform hover:scale-105 flex items-center gap-2">
+                    ลงทะเบียนเข้าร่วม <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <a href="#zoom" class="bg-blue-600/90 border border-blue-400 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-video"></i> เข้าร่วมผ่าน Zoom
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-16 container mx-auto px-4 bg-water-pattern">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-3">กำหนดการประชุม</h2>
+            <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            <p class="text-slate-500 mt-4">ภาพรวมงานสมัชชาฯ และรายละเอียดห้องย่อย</p>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-8">
+            <!-- Overview Schedule (Left) -->
+            <div class="md:col-span-5 bg-white rounded-xl shadow-md border border-slate-100 p-6 h-fit sticky top-24">
+                <h3 class="text-xl font-bold text-slate-700 mb-4 border-b pb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-earth-asia text-blue-600"></i> ภาพรวมงานสมัชชาฯ
+                </h3>
+                <div class="space-y-6 border-l-2 border-slate-200 pl-4 ml-2">
+                    <!-- Day 1 -->
+                    <div class="mb-2">
+                        <!-- ปรับขนาด font วันที่ให้ใหญ่ขึ้นเป็น text-lg -->
+                        <span class="bg-slate-200 text-slate-800 text-lg font-bold px-3 py-1 rounded shadow-sm">18 ธ.ค. 68</span>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-400"></div>
+                        <span class="text-sm font-semibold text-primary">08:00 - 09:30</span>
+                        <h4 class="font-bold text-slate-700">ลงทะเบียน & ชมนิทรรศการ</h4>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-400"></div>
+                        <span class="text-sm font-semibold text-primary">11:00 - 12.00</span>
+                        <h4 class="font-bold text-slate-700">นำเสนอความคืบหน้าข้อมติเดิม</h4>
+                        <p class="text-sm text-slate-500">ขจัดการเลือกปฏิบัติ / ความรุนแรงในครอบครัว / กลุ่มสถานะบุคคล / กระบวนการยุติธรรม</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-blue-100"></div>
+                        <span class="text-sm font-semibold text-primary">13:00 - 17:00</span>
+                        <h4 class="font-bold text-primary">เวทีสมัชชากลุ่มย่อย (คู่ขนาน)</h4>
+                        <p class="text-sm text-slate-500 font-medium">*รวมถึงห้องย่อยสิทธิในสิ่งแวดล้อมที่ดี</p>
+                    </div>
+                    
+                    <!-- Day 2 -->
+                    <div class="mt-8 mb-2">
+                        <!-- ปรับขนาด font วันที่ให้ใหญ่ขึ้นเป็น text-lg -->
+                        <span class="bg-slate-200 text-slate-800 text-lg font-bold px-3 py-1 rounded shadow-sm">19 ธ.ค. 68</span>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-400"></div>
+                        <span class="text-sm font-semibold text-primary">09:00 - 09:30</span>
+                        <h4 class="font-bold text-slate-700">พิธีเปิดงานสมัชชาฯ</h4>
+                        <p class="text-sm text-slate-500">โดย ประธานกรรมการสิทธิมนุษยชนแห่งชาติ</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-slate-400"></div>
+                        <span class="text-sm font-semibold text-primary">10:50 - 12:05</span>
+                        <h4 class="font-bold text-slate-700">นำเสนอข้อมติจากห้องย่อย</h4>
+                        <p class="text-sm text-slate-500">และประกาศเจตนารมณ์ขับเคลื่อนงานสิทธิมนุษยชน</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breakout Room Schedule (Right - Highlight) -->
+            <div class="md:col-span-7">
+                <div class="bg-white rounded-xl shadow-lg border border-cyan-100 overflow-hidden">
+                    <div class="bg-gradient-to-r from-cyan-50 to-white p-6 border-b border-cyan-100">
+                        <h3 class="text-2xl font-bold text-teal-800 flex items-center gap-3">
+                            <i class="fa-solid fa-hand-holding-droplet"></i> ห้องย่อย: สิ่งแวดล้อม (น้ำ)
+                        </h3>
+                        <!-- ปรับวันที่หัวข้อห้องย่อยให้ใหญ่ขึ้น -->
+                        <p class="text-slate-700 mt-2 text-lg font-medium"><i class="fa-regular fa-clock mr-1 text-primary"></i> 18 ธันวาคม 2568 | 13.00 - 17.00 น.</p>
+                    </div>
+                    
+                    <div class="p-6 space-y-6">
+                        <!-- Session 1 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-24 flex-shrink-0 text-right pt-1">
+                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
+                                <span class="block font-bold text-slate-800 text-xl">13:00</span>
+                                <span class="text-xs text-slate-400">เริ่ม</span>
+                            </div>
+                            <div class="flex-grow border-l-2 border-cyan-200 pl-4 pb-2">
+                                <h4 class="font-bold text-teal-700">กล่าวต้อนรับและชี้แจงวัตถุประสงค์</h4>
+                                <p class="text-sm text-slate-600">โดย นางสาวศยามล ไกยูรวงศ์ (กรรมการสิทธิมนุษยชนแห่งชาติ)</p>
+                            </div>
+                        </div>
+
+                        <!-- Session 2 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-24 flex-shrink-0 text-right pt-1">
+                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
+                                <span class="block font-bold text-slate-800 text-xl">13:30</span>
+                                <span class="text-xs text-slate-400">บรรยาย</span>
+                            </div>
+                            <div class="flex-grow border-l-2 border-cyan-200 pl-4 pb-2">
+                                <h4 class="font-bold text-teal-700">นำเสนอร่างข้อเสนอแนะ กสม.</h4>
+                                <p class="text-sm text-slate-600">"การจัดการน้ำและภัยพิบัติด้านน้ำท่ามกลางวิกฤติการเปลี่ยนแปลงสภาพภูมิอากาศ"</p>
+                                <p class="text-xs text-slate-500 mt-1">โดย คณะทำงานสิทธิในสิ่งแวดล้อมที่ดี สำนักงาน กสม.</p>
+                            </div>
+                        </div>
+
+                        <!-- Session 3 (Important) -->
+                        <div class="flex gap-4 items-start bg-cyan-50/50 -mx-6 px-6 py-3">
+                            <div class="w-24 flex-shrink-0 text-right pt-1">
+                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
+                                <span class="block font-bold text-slate-800 text-xl">14:00</span>
+                                <span class="text-xs text-slate-400">ระดมสมอง</span>
+                            </div>
+                            <div class="flex-grow border-l-2 border-orange-400 pl-4">
+                                <span class="inline-block px-2 py-0.5 bg-orange-100 text-orange-700 text-[10px] font-bold rounded mb-1">World Café / Fishbowl</span>
+                                <h4 class="font-bold text-teal-800">ระดมความเห็นเติมเต็มร่างข้อเสนอแนะ</h4>
+                                <p class="text-sm text-slate-600">เปิดพื้นที่แลกเปลี่ยนความคิดเห็นจากผู้เข้าร่วมทุกภาคส่วน</p>
+                            </div>
+                        </div>
+
+                        <!-- Session 4 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-24 flex-shrink-0 text-right pt-1">
+                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
+                                <span class="block font-bold text-slate-800 text-xl">15:00</span>
+                                <span class="text-xs text-slate-400">แลกเปลี่ยน</span>
+                            </div>
+                            <div class="flex-grow border-l-2 border-cyan-200 pl-4 pb-2">
+                                <h4 class="font-bold text-slate-700">การแลกเปลี่ยนความเห็นจากผู้เข้าร่วม</h4>
+                                <p class="text-sm text-slate-500">(Onsite และ Online)</p>
+                            </div>
+                        </div>
+
+                        <!-- Session 5 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-24 flex-shrink-0 text-right pt-1">
+                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
+                                <span class="block font-bold text-slate-800 text-xl">16:30</span>
+                                <span class="text-xs text-slate-400">สรุป</span>
+                            </div>
+                            <div class="flex-grow border-l-2 border-cyan-200 pl-4">
+                                <h4 class="font-bold text-slate-700">สรุปและพิจารณาข้อมติของห้องย่อย</h4>
+                                <p class="text-sm text-slate-600">เพื่อเตรียมนำเสนอในเวทีกลางวันที่ 19 ธันวาคม</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zoom Info Section -->
+    <section id="zoom" class="bg-slate-800 py-12 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <div class="inline-block px-3 py-1 bg-red-500/80 rounded text-xs font-bold mb-3">ONLINE ACCESS</div>
+                    <h2 class="text-3xl font-bold mb-4">เข้าร่วมประชุมออนไลน์ (Zoom)</h2>
+                    <p class="text-slate-300 mb-6">
+                        สำหรับผู้ที่ไม่สามารถเดินทางมาร่วมงานได้ สามารถเข้าร่วมและแสดงความคิดเห็นผ่านระบบ Zoom Meeting ได้ตลอดการประชุมห้องย่อย
+                    </p>
+                    <a href="https://us06web.zoom.us/j/83605431555?pwd=VkUIZ7JhiCJjJ47hbEmWSlKnyJa7az.1" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-blue-500/50">
+                        <i class="fa-solid fa-video mr-2"></i> กดเพื่อเข้าร่วม Zoom ทันที
+                    </a>
+                </div>
+                <div class="md:w-1/2 bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 max-w-md w-full">
+                    <div class="grid gap-4">
+                        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                            <span class="text-slate-300 text-sm">Meeting ID</span>
+                            <span class="font-mono text-xl font-bold text-yellow-400 tracking-wider">836 0543 1555</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                            <span class="text-slate-300 text-sm">Passcode</span>
+                            <span class="font-mono text-xl font-bold text-yellow-400 tracking-wider">1234</span>
+                        </div>
+                        <div class="text-xs text-center text-slate-400 mt-2">
+                            *กรุณาเปิดกล้องและปิดไมค์เมื่อเข้าสู่ห้องประชุม
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents" class="bg-slate-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">ศูนย์รวมเอกสาร</h2>
+                    <p class="text-slate-500">ดาวน์โหลดเอกสารสำคัญประกอบการประชุม</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <!-- Doc 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 group flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 bg-indigo-100 text-indigo-500 rounded-lg flex-shrink-0 flex items-center justify-center text-2xl">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg leading-tight group-hover:text-primary transition-colors">กำหนดการภาพรวม (สมัชชาฯ)</h3>
+                            <p class="text-sm text-slate-500 mt-1">กำหนดการงานสมัชชาสิทธิมนุษยชน 18-19 ธ.ค. 68</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-2">
+                        <a href="https://drive.google.com/file/d/1-auGjCWOQujWsGSKSY4vurV_m_mmU0f4/view?usp=sharing" target="_blank" class="flex items-center justify-center w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-all duration-200 gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-download"></i> คลิกเพื่อดาวน์โหลด / เปิดอ่าน
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doc 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 group flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg leading-tight group-hover:text-primary transition-colors">กำหนดการห้องย่อย (สิ่งแวดล้อม/น้ำ)</h3>
+                            <p class="text-sm text-slate-500 mt-1">รายละเอียดเวทีเสวนา World Café และ Fishbowl</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-2">
+                        <a href="https://drive.google.com/file/d/1_i7GbWSKR9H-5g5zcsJi28LwezO8Pmwq/view?usp=sharing" target="_blank" class="flex items-center justify-center w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-bold rounded-lg transition-all duration-200 gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-download"></i> คลิกเพื่อดาวน์โหลด / เปิดอ่าน
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doc 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 group relative overflow-hidden flex flex-col h-full">
+                    <div class="absolute top-0 right-0 bg-amber-400 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10">Draft</div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 bg-blue-100 text-blue-500 rounded-lg flex-shrink-0 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg leading-tight group-hover:text-primary transition-colors">ร่างข้อมติ (Draft Resolution)</h3>
+                            <p class="text-sm text-slate-500 mt-1">เอกสารร่างข้อเสนอแนะด้านการจัดการน้ำและภัยพิบัติ</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-2">
+                        <a href="https://drive.google.com/drive/folders/1n_pCNanKaSe5Ho-WVpjDJwCHbeQ6r6_P?usp=sharing" target="_blank" class="flex items-center justify-center w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all duration-200 gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-google-drive"></i> คลิกเพื่อเปิดโฟลเดอร์
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doc 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-slate-200 group flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 bg-orange-100 text-orange-500 rounded-lg flex-shrink-0 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg leading-tight group-hover:text-primary transition-colors">เอกสารประกอบการประชุม</h3>
+                            <p class="text-sm text-slate-500 mt-1">รวมไฟล์นำเสนอ ข้อมูลสถิติ และเอกสารอื่น ๆ</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-2">
+                        <a href="https://drive.google.com/drive/folders/1n_pCNanKaSe5Ho-WVpjDJwCHbeQ6r6_P?usp=sharing" target="_blank" class="flex items-center justify-center w-full py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-200 gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-google-drive"></i> คลิกเพื่อเปิดโฟลเดอร์
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Registration -->
+    <section id="register" class="bg-white py-16 border-t border-slate-200">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <i class="fa-solid fa-ticket text-5xl text-primary mb-6"></i>
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">ลงทะเบียนเข้าร่วมประชุมห้องย่อย</h2>
+            <p class="text-slate-600 mb-8 text-lg">
+                กรุณาลงทะเบียนผ่านระบบกลาง เพื่อสำรองที่นั่งและรับเอกสาร<br>
+                (เลือกห้องย่อย: สิทธิในสิ่งแวดล้อมที่ดี)
+            </p>
+
+            <div class="bg-slate-50 p-12 rounded-2xl shadow-inner border border-slate-200 flex flex-col items-center justify-center gap-6">
+                <a href="https://register.theconnect789.com/humanrights/room/sub1" target="_blank" class="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white transition-all duration-200 bg-gradient-to-r from-primary to-emerald-500 rounded-full hover:from-emerald-500 hover:to-teal-600 shadow-lg hover:shadow-emerald-500/40 transform hover:-translate-y-1">
+                    <span class="mr-3">ลงทะเบียนทันที</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <p class="text-sm text-slate-400">
+                    ลิงก์จะนำท่านไปยังเว็บไซต์ theconnect789.com
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">&copy; 2568 งานสมัชชาสิทธิมนุษยชน. All rights reserved.</p>
+            <p class="text-xs text-slate-500">โรงแรมเซ็นทารา ไลฟ์ ศูนย์ราชการและคอนเวนชันเซ็นเตอร์ แจ้งวัฒนะ</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'py-2');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.remove('shadow-md', 'py-2');
+                navbar.classList.add('py-3');
+            }
+        });
+    </script>
+</body>
+</html>
