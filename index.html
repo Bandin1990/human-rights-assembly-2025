@@ -28,6 +28,22 @@
                         secondary: '#065f46', // Emerald 800
                         accent: '#0ea5e9', // Sky 500 (For Water Theme)
                         water: '#e0f2fe', // Sky 100
+                        heat: '#f97316', // Orange 500
+                    },
+                    animation: {
+                        'wave-slow': 'wave 15s linear infinite',
+                        'wave-fast': 'wave 10s linear infinite',
+                        'heat-pulse': 'heat 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        wave: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        heat: {
+                            '0%, 100%': { opacity: '0.3' },
+                            '50%': { opacity: '0.6' },
+                        }
                     }
                 }
             }
@@ -39,6 +55,23 @@
         .clip-path-slope { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
         .bg-water-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='%230ea5e9' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+        
+        /* SVG Wave Pattern Styling */
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .wave-bg {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M892.25 114.72L0 114.72 0 0c0 0 211.51 99.71 436.12 30.77 224.61-68.94 456.13 83.95 456.13 83.95z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-position: bottom;
+            background-repeat: repeat-x;
+            background-size: 50% 100px;
         }
     </style>
 </head>
@@ -79,19 +112,30 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative bg-gradient-to-br from-teal-700 via-emerald-600 to-cyan-700 text-white pt-32 pb-24 lg:pt-40 lg:pb-32 clip-path-slope">
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
-            <i class="fa-solid fa-water absolute top-10 left-10 text-9xl animate-pulse"></i>
-            <i class="fa-solid fa-cloud-showers-heavy absolute bottom-20 right-20 text-8xl"></i>
+    <!-- Hero Section with Animation -->
+    <header class="relative overflow-hidden bg-gradient-to-b from-orange-500 via-red-400 to-teal-600 text-white pt-32 pb-32 lg:pt-40 lg:pb-40 clip-path-slope">
+        
+        <!-- 1. Heat Haze Animation (Global Boiling) -->
+        <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-red-600/40 to-transparent animate-heat-pulse pointer-events-none z-0"></div>
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-yellow-500/30 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
+
+        <!-- 2. Rising Water/Wave Animation (Flood) -->
+        <div class="wave-container z-0">
+            <div class="absolute bottom-0 w-full h-full wave-bg animate-wave-slow opacity-30"></div>
+            <div class="absolute bottom-[-20px] w-full h-full wave-bg animate-wave-fast opacity-20" style="background-position: -200px bottom;"></div>
+        </div>
+
+        <!-- Icons Decoration -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none z-0">
+            <i class="fa-solid fa-temperature-arrow-up absolute top-20 right-1/4 text-8xl text-red-100 animate-bounce" style="animation-duration: 3s;"></i>
+            <i class="fa-solid fa-house-flood-water absolute bottom-32 left-10 text-9xl text-blue-200"></i>
         </div>
         
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <!-- ปรับขนาด font เป็น text-xl และเพิ่ม padding ให้ดูใหญ่ขึ้น -->
-            <span class="inline-block py-2 px-4 rounded-full bg-white/20 border border-white/30 text-xl font-semibold mb-6 backdrop-blur-sm shadow-lg">
+            <span class="inline-block py-2 px-4 rounded-full bg-black/20 border border-white/30 text-xl font-semibold mb-6 backdrop-blur-sm shadow-lg">
                 งานสมัชชาสิทธิมนุษยชน เนื่องในวันสิทธิมนุษยชนสากล 2568
             </span>
-            <h1 class="text-2xl md:text-4xl font-bold mb-6 leading-normal text-emerald-100">
+            <h1 class="text-2xl md:text-4xl font-bold mb-6 leading-normal text-white drop-shadow-lg">
                 ห้องย่อยประเด็นสิทธิในสิ่งแวดล้อมที่ดี
             </h1>
             
@@ -100,12 +144,12 @@
             </h2>
             
             <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10 text-sm md:text-base">
-                <div class="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md py-2 px-4 rounded-lg border border-white/10">
-                    <i class="fa-regular fa-calendar text-cyan-300"></i>
+                <div class="flex items-center justify-center gap-2 bg-black/30 backdrop-blur-md py-2 px-4 rounded-lg border border-white/20 hover:bg-black/40 transition-colors">
+                    <i class="fa-regular fa-calendar text-orange-300"></i>
                     <span>18 - 19 ธันวาคม 2568</span>
                 </div>
-                <div class="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md py-2 px-4 rounded-lg border border-white/10">
-                    <i class="fa-solid fa-location-dot text-cyan-300"></i>
+                <div class="flex items-center justify-center gap-2 bg-black/30 backdrop-blur-md py-2 px-4 rounded-lg border border-white/20 hover:bg-black/40 transition-colors">
+                    <i class="fa-solid fa-location-dot text-orange-300"></i>
                     <span>รร.เซ็นทารา ไลฟ์ ศูนย์ราชการฯ แจ้งวัฒนะ</span>
                 </div>
             </div>
@@ -114,7 +158,7 @@
                 <a href="https://register.theconnect789.com/humanrights/room/sub1" target="_blank" class="bg-white text-teal-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-cyan-50 transition-transform hover:scale-105 flex items-center gap-2">
                     ลงทะเบียนเข้าร่วม <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
-                <a href="#zoom" class="bg-blue-600/90 border border-blue-400 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition-colors flex items-center gap-2">
+                <a href="#zoom" class="bg-black/40 border border-white/50 text-white font-bold py-3 px-8 rounded-full hover:bg-black/60 transition-colors flex items-center gap-2 backdrop-blur-sm">
                     <i class="fa-solid fa-video"></i> เข้าร่วมผ่าน Zoom
                 </a>
             </div>
@@ -131,7 +175,6 @@
 
         <div class="grid md:grid-cols-12 gap-8">
             <!-- Overview Schedule (Left) -->
-            <!-- แก้ไขตรงนี้: เปลี่ยน sticky top-24 เป็น md:sticky md:top-24 เพื่อให้ทำงานเฉพาะหน้าจอขนาดกลางขึ้นไป -->
             <div class="md:col-span-5 bg-white rounded-xl shadow-md border border-slate-100 p-6 h-fit md:sticky md:top-24 relative">
                 <h3 class="text-xl font-bold text-slate-700 mb-4 border-b pb-2 flex items-center gap-2">
                     <i class="fa-solid fa-earth-asia text-blue-600"></i> ภาพรวมงานสมัชชาฯ
@@ -139,7 +182,6 @@
                 <div class="space-y-6 border-l-2 border-slate-200 pl-4 ml-2">
                     <!-- Day 1 -->
                     <div class="mb-2">
-                        <!-- ปรับขนาด font วันที่ให้ใหญ่ขึ้นเป็น text-lg -->
                         <span class="bg-slate-200 text-slate-800 text-lg font-bold px-3 py-1 rounded shadow-sm">18 ธ.ค. 68</span>
                     </div>
                     <div class="relative">
@@ -162,7 +204,6 @@
                     
                     <!-- Day 2 -->
                     <div class="mt-8 mb-2">
-                        <!-- ปรับขนาด font วันที่ให้ใหญ่ขึ้นเป็น text-lg -->
                         <span class="bg-slate-200 text-slate-800 text-lg font-bold px-3 py-1 rounded shadow-sm">19 ธ.ค. 68</span>
                     </div>
                     <div class="relative">
@@ -187,7 +228,6 @@
                         <h3 class="text-2xl font-bold text-teal-800 flex items-center gap-3">
                             <i class="fa-solid fa-hand-holding-droplet"></i> ห้องย่อย: สิทธิในสิ่งแวดล้อมที่ดี
                         </h3>
-                        <!-- ปรับวันที่หัวข้อห้องย่อยให้ใหญ่ขึ้น -->
                         <p class="text-slate-700 mt-2 text-lg font-medium"><i class="fa-regular fa-clock mr-1 text-primary"></i> 18 ธันวาคม 2568 | 13.00 - 17.00 น.</p>
                     </div>
                     
@@ -195,7 +235,6 @@
                         <!-- Session 1 -->
                         <div class="flex gap-4 items-start">
                             <div class="w-24 flex-shrink-0 text-right pt-1">
-                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
                                 <span class="block font-bold text-slate-800 text-xl">13:00</span>
                                 <span class="text-xs text-slate-400">เริ่ม</span>
                             </div>
@@ -208,7 +247,6 @@
                         <!-- Session 2 -->
                         <div class="flex gap-4 items-start">
                             <div class="w-24 flex-shrink-0 text-right pt-1">
-                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
                                 <span class="block font-bold text-slate-800 text-xl">13:30</span>
                                 <span class="text-xs text-slate-400">บรรยาย</span>
                             </div>
@@ -222,7 +260,6 @@
                         <!-- Session 3 (Important) -->
                         <div class="flex gap-4 items-start bg-cyan-50/50 -mx-6 px-6 py-3">
                             <div class="w-24 flex-shrink-0 text-right pt-1">
-                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
                                 <span class="block font-bold text-slate-800 text-xl">14:00</span>
                                 <span class="text-xs text-slate-400">ระดมสมอง</span>
                             </div>
@@ -236,7 +273,6 @@
                         <!-- Session 4 -->
                         <div class="flex gap-4 items-start">
                             <div class="w-24 flex-shrink-0 text-right pt-1">
-                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
                                 <span class="block font-bold text-slate-800 text-xl">15:00</span>
                                 <span class="text-xs text-slate-400">แลกเปลี่ยน</span>
                             </div>
@@ -249,7 +285,6 @@
                         <!-- Session 5 -->
                         <div class="flex gap-4 items-start">
                             <div class="w-24 flex-shrink-0 text-right pt-1">
-                                <!-- ปรับเวลาให้ใหญ่ขึ้นเป็น text-xl -->
                                 <span class="block font-bold text-slate-800 text-xl">16:30</span>
                                 <span class="text-xs text-slate-400">สรุป</span>
                             </div>
